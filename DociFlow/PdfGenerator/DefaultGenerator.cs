@@ -26,13 +26,13 @@ namespace DociFlow.PdfGenerator
 
         public void DocxToPdf(string wordFilePath, string pdfDestinationPath)
         {
-            if (String.IsNullOrWhiteSpace(Properties.Settings.Default.LibreOfficePath) || !Directory.Exists(Properties.Settings.Default.LibreOfficePath))
-                throw new Exception($"Missing LibreOffice instance. Check path in field {nameof(Properties.Settings.Default.LibreOfficePath)} on your settings file.");
+            if (String.IsNullOrWhiteSpace(Program.LibreOfficePath) || !Directory.Exists(Program.LibreOfficePath))
+                throw new Exception($"Missing LibreOffice instance. Check path in field {nameof(Program.LibreOfficePath)} on your settings file.");
 
             string tempPdfPath = Path.Combine(Path.GetDirectoryName(pdfDestinationPath), Path.GetFileNameWithoutExtension(wordFilePath) + ".pdf");
             Program.Logger.Debug($"Converting DOC to PDF: {wordFilePath} to {tempPdfPath}");
 
-            FileInfo sofficeFi = new FileInfo(Path.Combine(Properties.Settings.Default.LibreOfficePath, "App", "libreoffice", "program", "soffice.exe"));
+            FileInfo sofficeFi = new FileInfo(Path.Combine(Program.LibreOfficePath, "App", "libreoffice", "program", "soffice.exe"));
             if (!sofficeFi.Exists) throw new FileNotFoundException("LibreOffice executable not founded!", sofficeFi.FullName);
 
             MaeveFramework.Helpers.Retry.Do(() =>
@@ -92,7 +92,7 @@ namespace DociFlow.PdfGenerator
                 if (!File.Exists(pdfDestinationPath))
                     throw new FileNotFoundException("Failed to finalize PDF generation", pdfDestinationPath);
 
-                //_browser = new Browser(Properties.Settings.Default.CefRenderingWait);
+                //_browser = new Browser(Program.LibreOfficePath);
                 //_browser.TakeScreenshot(new Uri(pdfDestinationPath).AbsoluteUri, Path.Combine(Path.GetDirectoryName(pdfDestinationPath), Path.GetFileNameWithoutExtension(pdfDestinationPath) + ".png"));
             }
             catch(Exception)
@@ -107,7 +107,7 @@ namespace DociFlow.PdfGenerator
 
         public void HtmlToPdf(string htmlFilePath, string pdfDestinationPath, bool landscape = false)
         {
-            _browser = new Browser(Properties.Settings.Default.CefRenderingWait);
+            _browser = new Browser(Program.CefRenderingWait);
             _browser.DownloadPdf(new Uri(htmlFilePath).AbsoluteUri, pdfDestinationPath, landscape, Path.Combine(Path.GetDirectoryName(pdfDestinationPath), Path.GetFileNameWithoutExtension(pdfDestinationPath) + ".png"));
             _browser.Dispose();
         }

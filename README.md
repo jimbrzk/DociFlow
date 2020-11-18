@@ -3,7 +3,7 @@
 
 Befaore convert lf Microsoft Word files to PDF you must install LibreOffice on your machine.
 DociFlow starts LibreOffice process in background to convert Word documents to PDF.
-You can provide LibreOfficePath in DociFlow.exe.config
+You can provide LibreOfficePath in appsettings.json
 
 If you wan't to convert HTML to PDF, DociFlow dose not need anything, it will start CEF browser in background and make required conversion.
 

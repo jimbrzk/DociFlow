@@ -1,31 +1,44 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
-	<Platforms>x86;x64</Platforms>
     <OutputType>Exe</OutputType>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <UseWindowsForms>true</UseWindowsForms>
-    <StartupObject>DociFlow.Program</StartupObject>
+    <TargetFramework>net5.0</TargetFramework>
+    <Platforms>AnyCPU;x64;x86</Platforms>
     <Authors>Jakub Imbrzykowski</Authors>
+    <Version>1.1.0</Version>
+    <Company>TioneTech</Company>
+    <Description>Documents converte</Description>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/kubala156/DociFlow</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/kubala156/DociFlow</RepositoryUrl>
     <RepositoryType>GitHub</RepositoryType>
-    <PackageTags>PDF, converter, documents</PackageTags>
+    <PackageTags>pdf, docx, converter</PackageTags>
+    <StartupObject>DociFlow.Program</StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
+
   <ItemGroup>
-    <PackageReference Include="cef.redist.x64" Version="85.3.13" />
-    <PackageReference Include="cef.redist.x86" Version="85.3.13" />
-    <PackageReference Include="CefSharp.Common" Version="85.3.130" />
+    <None Remove="appsettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CefSharp.OffScreen" Version="85.3.130" />
     <PackageReference Include="MaeveFramework" Version="1.0.4.4" />
-    <PackageReference Include="Microsoft.CSharp" Version="4.6.0" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.6.0" />
-    <PackageReference Include="System.Drawing.Common" Version="4.6.0" />
-    <PackageReference Include="System.Linq.Dynamic.Core" Version="1.2.4" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="System.Drawing.Common" Version="5.0.0" />
   </ItemGroup>
+
   <ItemGroup>
     <None Include="..\LICENSE">
       <Pack>True</Pack>
@@ -36,17 +49,5 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Update="Properties\Settings.Designer.cs">
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
+
 </Project>

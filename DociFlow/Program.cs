@@ -9,10 +9,11 @@ using System.Text;
 using System.Threading.Tasks;
 using DociFlow.PdfGenerator;
 using MaeveFramework.Helpers;
+using Microsoft.Extensions.Configuration;
 
 namespace DociFlow
 {
-    class Program
+    public class Program
     {
         public static string BaseDir
         {
@@ -34,18 +35,27 @@ namespace DociFlow
         public static event EventHandler ApplicationClosing;
         public static DirectoryInfo CacheDir;
 
+        public static string LibreOfficePath { get; private set; }
+        public static int CefRenderingWait { get; private set; }
+
         static Program()
         {
             MaeveFramework.Logger.LoggingManager.UseConsole();
-
             Logger = MaeveFramework.Logger.LoggingManager.GetLogger();
+
             CacheDir = new DirectoryInfo(Path.Combine(BaseDir, "cache"));
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             try
             {
+                var builder = new ConfigurationBuilder()
+                    .AddJsonFile($"appsettings.json", false, false);
+                var configuration = builder.Build();
+                LibreOfficePath = configuration.GetSection(nameof(LibreOfficePath)).Value;
+                CefRenderingWait = int.Parse(configuration.GetSection(nameof(CefRenderingWait)).Value);
+
                 if (!args.Any() || args[0] == "/help")
                 {
                     Console.WriteLine($"DociFlow {AppVersion}");

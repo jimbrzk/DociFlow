@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DociFlow": {
+      "commandName": "Project",
+      "commandLineArgs": "/help"
+    }
+  }
+}
