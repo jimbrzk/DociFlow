@@ -16,7 +16,7 @@
     <Copyright>Copyright ©  2020</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Shared library for documents converter DociFlow.</Description>
-    <Version>1.0.1-alpha</Version>
+    <Version>1.0.2</Version>
     <PackageReleaseNotes>Word files Seek And Replace</PackageReleaseNotes>
   </PropertyGroup>
 

@@ -1,3 +1,18 @@
+# How to replace tag inside Word files
+
+```
+var vars = Dictionary<string, string>() 
+{
+    { "testtag", "Test tag value" }
+}
+using (var doci = new DociFlow.Lib.Word.SeekAndReplace())
+{
+    // test.docx contains text with tag "{{testtag}}" it will be replaced with "Test tag value" in less than one seconds!
+    doci.Open("test.docx");
+    doci.FindAndReplace(vars, "{{", "}}");
+}
+```
+
 # DociFlow
 ## Documents converter DOCX -> PDF and HTML -> PDF
 
