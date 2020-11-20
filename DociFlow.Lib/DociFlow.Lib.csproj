@@ -16,6 +16,8 @@
     <Copyright>Copyright ©  2020</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Shared library for documents converter DociFlow.</Description>
+    <Version>1.0.1-alpha</Version>
+    <PackageReleaseNotes>Word files Seek And Replace</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
