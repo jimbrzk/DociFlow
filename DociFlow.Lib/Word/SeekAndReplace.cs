@@ -51,14 +51,17 @@ namespace DociFlow.Lib.Word
                 }
                 if (String.IsNullOrWhiteSpace(sourceString)) continue;
 
-                MatchCollection matches = Regex.Matches(sourceString, $@"{openTag}(.+?){closeTag}", RegexOptions.Multiline, TimeSpan.FromMinutes(1));
+                MatchCollection matches = Regex.Matches(sourceString, $@"{openTag}.+?<w:t>(.+?)<\/w:t>.+?{closeTag}", RegexOptions.Multiline, TimeSpan.FromMinutes(1));
                 foreach (Match match in matches)
                 {
                     try
                     {
-                        if (match.Success && match.Groups.Count > 1)
+                        if (match.Success && match.Groups.Count > 1 && variables.ContainsKey(match.Groups[1].Value))
                         {
-                            sourceString = sourceString.Replace(match.Groups[0].Value, variables[match.Groups[1].Value]);
+                            sourceString = sourceString.Replace(match.Value, 
+                                match.Value.Replace(match.Groups[1].Value, variables[match.Groups[1].Value])
+                                .TrimStart(openTag.ToCharArray())
+                                .TrimEnd(closeTag.ToCharArray()));
                         }
                     }
                     catch (Exception) { }
@@ -67,9 +70,8 @@ namespace DociFlow.Lib.Word
                 using (Stream destinationStream = archiveEntry.Open())
                 {
                     byte[] bytes = Encoding.UTF8.GetBytes(sourceString);
-                    destinationStream.Write(bytes, 0, (Convert.ToInt32(destinationStream.Length) > bytes.Length) 
-                        ? Convert.ToInt32(destinationStream.Length) 
-                        : bytes.Length);
+                    destinationStream.SetLength(bytes.Length);
+                    destinationStream.Write(bytes, 0, bytes.Length);
                 }
 
                 sourceString = null;
