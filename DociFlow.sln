@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DociFlow.Lib", "DociFlow.Li
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DociFlow", "DociFlow\DociFlow.csproj", "{27307844-670E-44EF-A79C-193BF0C9F8D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DociFlow.Example", "DociFlow.Example\DociFlow.Example.csproj", "{01820C40-741F-42AC-8D54-EAD49CA790DC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -41,6 +43,18 @@ Global
 		{27307844-670E-44EF-A79C-193BF0C9F8D9}.Release|x64.Build.0 = Release|x64
 		{27307844-670E-44EF-A79C-193BF0C9F8D9}.Release|x86.ActiveCfg = Release|x86
 		{27307844-670E-44EF-A79C-193BF0C9F8D9}.Release|x86.Build.0 = Release|x86
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Debug|x64.Build.0 = Debug|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Debug|x86.Build.0 = Debug|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Release|x64.ActiveCfg = Release|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Release|x64.Build.0 = Release|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Release|x86.ActiveCfg = Release|Any CPU
+		{01820C40-741F-42AC-8D54-EAD49CA790DC}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

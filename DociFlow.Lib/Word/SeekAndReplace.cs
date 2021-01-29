@@ -51,17 +51,26 @@ namespace DociFlow.Lib.Word
                 }
                 if (String.IsNullOrWhiteSpace(sourceString)) continue;
 
-                MatchCollection matches = Regex.Matches(sourceString, $@"{openTag}.+?<w:t>(.+?)<\/w:t>.+?{closeTag}", RegexOptions.Multiline, TimeSpan.FromMinutes(1));
+                MatchCollection matches = Regex.Matches(sourceString, $@"{openTag}(.+?){closeTag}", RegexOptions.Multiline, TimeSpan.FromMinutes(1));
                 foreach (Match match in matches)
                 {
                     try
                     {
-                        if (match.Success && match.Groups.Count > 1 && variables.ContainsKey(match.Groups[1].Value))
+                        if (match.Success && match.Groups.Count > 1)
                         {
-                            sourceString = sourceString.Replace(match.Value, 
-                                match.Value.Replace(match.Groups[1].Value, variables[match.Groups[1].Value])
-                                .TrimStart(openTag.ToCharArray())
-                                .TrimEnd(closeTag.ToCharArray()));
+                            if(variables.ContainsKey(match.Groups[1].Value))
+                            {
+                                sourceString = sourceString.Replace(match.Value, variables[match.Groups[1].Value]);
+                            }
+                            else if (variables.Keys.Any(x => match.Value.Contains(x)))
+                            {
+                                string variable = variables.Keys.FirstOrDefault(x => match.Value.Contains(x));
+                                if (!string.IsNullOrEmpty(variable))
+                                {
+                                    string newVal = match.Value.Replace(variable, variables[variable]).Replace(openTag, "").Replace(closeTag, "");
+                                    sourceString = sourceString.Replace(match.Value, newVal);
+                                }
+                            }
                         }
                     }
                     catch (Exception) { }

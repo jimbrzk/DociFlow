@@ -13,11 +13,11 @@
     <Product>DociFlow library</Product>
     <Authors>Jakub Imbrzykowski</Authors>
     <Company>TioneTech</Company>
-    <Copyright>Copyright ©  2020</Copyright>
+    <Copyright>Copyright ©  2021</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Shared library for documents converter DociFlow.</Description>
-    <Version>1.0.2</Version>
-    <PackageReleaseNotes>Word files Seek And Replace</PackageReleaseNotes>
+    <Version>1.1.0</Version>
+    <PackageReleaseNotes>Lookup regex and replacer fix</PackageReleaseNotes>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
