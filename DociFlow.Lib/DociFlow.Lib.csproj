@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyVersion>1.1.0.0</AssemblyVersion>
-    <FileVersion>1.1.0.0</FileVersion>
+    <AssemblyVersion>1.1.2.0</AssemblyVersion>
+    <FileVersion>1.1.2.0</FileVersion>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PackageProjectUrl>https://github.com/kubala156/DociFlow</PackageProjectUrl>
     <PackageIcon>icon.png</PackageIcon>
@@ -16,7 +16,7 @@
     <Copyright>Copyright ©  2021</Copyright>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Description>Shared library for documents converter DociFlow.</Description>
-    <Version>1.1.0</Version>
+    <Version>1.1.2</Version>
     <PackageReleaseNotes>Lookup regex and replacer fix</PackageReleaseNotes>
   </PropertyGroup>
 

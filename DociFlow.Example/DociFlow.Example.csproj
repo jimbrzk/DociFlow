@@ -51,6 +51,9 @@
     <Content Include="exampledoc.docx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="exampledoc2.docx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DociFlow.Lib\DociFlow.Lib.csproj">

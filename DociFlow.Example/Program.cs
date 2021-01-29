@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace DociFlow.Example
@@ -16,8 +17,17 @@ namespace DociFlow.Example
 
         static void Main(string[] args)
         {
+            ProcessFile("exampledoc.docx");
+            Thread.Sleep(1000);
+            ProcessFile("exampledoc2.docx");
+
+            Console.ReadLine();
+        }
+
+        private static void ProcessFile(string file)
+        {
             string tempFile = Path.GetFileName(Path.GetTempFileName());
-            File.Copy("exampledoc.docx", tempFile);
+            //File.Copy(file, tempFile);
 
             using (var doci = new DociFlow.Lib.Word.SeekAndReplace())
             {
@@ -30,8 +40,6 @@ namespace DociFlow.Example
             File.Move(tempFile, newFile);
 
             Process.Start(newFile);
-
-            Console.ReadLine();
         }
     }
 }

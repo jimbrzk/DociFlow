@@ -58,7 +58,7 @@ namespace DociFlow.Lib.Word
                     {
                         if (match.Success && match.Groups.Count > 1)
                         {
-                            if(variables.ContainsKey(match.Groups[1].Value))
+                            if (variables.ContainsKey(match.Groups[1].Value))
                             {
                                 sourceString = sourceString.Replace(match.Value, variables[match.Groups[1].Value]);
                             }
@@ -71,6 +71,22 @@ namespace DociFlow.Lib.Word
                                     sourceString = sourceString.Replace(match.Value, newVal);
                                 }
                             }
+                        }
+                    }
+                    catch (Exception) { }
+                }
+
+                matches = Regex.Matches(sourceString, $@"{openTag}.+?<w:t>(.+?)<\/w:t>.+?{closeTag}", RegexOptions.Multiline, TimeSpan.FromMinutes(1));
+                foreach (Match match in matches)
+                {
+                    try
+                    {
+                        if (match.Success && match.Groups.Count > 1 && variables.ContainsKey(match.Groups[1].Value))
+                        {
+                            sourceString = sourceString.Replace(match.Value, 
+                                match.Value.Replace(match.Groups[1].Value, variables[match.Groups[1].Value])
+                                .TrimStart(openTag.ToCharArray())
+                                .TrimEnd(closeTag.ToCharArray()));
                         }
                     }
                     catch (Exception) { }
